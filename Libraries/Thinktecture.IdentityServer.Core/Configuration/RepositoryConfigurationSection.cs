@@ -66,6 +66,25 @@ namespace Thinktecture.IdentityServer.Configuration
 
         #endregion
 
+        #region ClaimsRepository Property
+
+        internal const global::System.String ClaimsRepositoryPropertyName = "claimsRepository";
+
+        [global::System.Configuration.ConfigurationProperty(ClaimsRepositoryPropertyName, IsRequired = false, IsKey = false, IsDefaultCollection = false, DefaultValue = "Thinktecture.IdentityServer.Repositories.ProviderClaimsRepository, Thinktecture.IdentityServer")]
+        public global::System.String ClaimsRepository
+        {
+            get
+            {
+                return (global::System.String)base[ClaimsRepositoryPropertyName];
+            }
+            set
+            {
+                base[ClaimsRepositoryPropertyName] = value;
+            }
+        }
+
+        #endregion
+
         #region RoleManagement Property
 
         /// <summary>

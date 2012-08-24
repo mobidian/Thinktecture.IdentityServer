@@ -3,10 +3,10 @@ obj/
 packages/
 TestResults/
 build/
-DefaultConfiguration/
 Documentation/
 csx/
 Profiles/
+
 
 ServiceConfiguration.Cloud.cscfg
 ServiceConfiguration.Local.cscfg
@@ -15,5 +15,6 @@ testimpactdata.sdf
 Packages.dgml
 *.suo
 *.user
+*.sdf
 
 _ReSharper*
