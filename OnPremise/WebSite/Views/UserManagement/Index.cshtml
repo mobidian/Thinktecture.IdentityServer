@@ -1,0 +1,31 @@
+﻿@model Thinktecture.IdentityServer.Web.ViewModels.Administration.UsersModel
+@{
+    ViewBag.Title = "Users";
+}
+
+<h2>Users</h2>
+
+<p>
+    @Html.ActionLink("Add New", "add")
+</p>
+
+<ul>
+    @foreach (var item in Model.Users)
+    {
+        <li>
+            <b>@item.UserName</b>
+            @Html.ActionLink("(edit)", "edit", new { userName = item.UserName })
+            @Html.ActionLink("(delete)", "delete", new { userName = item.UserName })
+            <br/>
+            (@string.Join(", ", item.Roles))
+            @*@Html.ActionLink("(edit)", "edit", new { id = item.Id })
+            @Html.ActionLink("(delete)", "delete", new { id = item.Id })
+            <br />
+            (@item.Realm)*@
+        </li>
+    }
+</ul>
+
+<div>
+    @Html.ActionLink("Back", "Index", "Admin")
+</div>

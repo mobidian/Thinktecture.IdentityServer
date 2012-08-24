@@ -1,0 +1,75 @@
+﻿@model Thinktecture.IdentityServer.Web.ViewModels.Administration.UserModel
+
+@{
+    ViewBag.Title = "Add new User";
+}
+
+<h2>Add new User</h2>
+
+@using (Html.BeginForm("Add", "UserManagement", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    
+    <fieldset>
+        <legend>User Details</legend>
+    
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UserName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.UserName)
+            @Html.ValidationMessageFor(model => model.UserName)
+        </div>
+    
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Password)
+        </div>
+        <div class="editor-field">
+            @Html.PasswordFor(model => model.Password)
+            @Html.ValidationMessageFor(model => model.Password)
+        </div>
+    
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Email)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Email)
+            @Html.ValidationMessageFor(model => model.Email)
+        </div>
+        
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SecurityQuestion)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SecurityQuestion)
+            @Html.ValidationMessageFor(model => model.SecurityQuestion)
+        </div>
+        
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SecurityAnswer)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SecurityAnswer)
+            @Html.ValidationMessageFor(model => model.SecurityAnswer)
+        </div>
+        
+        <div class="editor-label">
+            @Html.Label("Roles")
+        </div>
+        @foreach(string role in ViewBag.Roles)
+        {
+            <div class="editor-field">
+                @Html.CheckBox("roles." + role, Model != null && Model.Roles != null && Model.Roles.Contains(role)) @role
+            </div>
+        }
+        
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back", "Index")
+</div>

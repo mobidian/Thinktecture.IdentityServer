@@ -104,9 +104,11 @@
     <Compile Include="Models\GlobalConfiguration.cs" />
     <Compile Include="Endpoints.cs" />
     <Compile Include="Helper\Cache.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Repositories\IClientCertificatesRepository.cs" />
     <Compile Include="Repositories\ICacheRepository.cs" />
     <Compile Include="Repositories\IDelegationRepository.cs" />
+    <Compile Include="Repositories\IRoleRepository.cs" />
     <Compile Include="SWT\SimpleWebToken.cs" />
     <Compile Include="SWT\SwtConstants.cs" />
     <Compile Include="SWT\SwtSecurityKeyClause.cs" />

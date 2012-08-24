@@ -66,6 +66,31 @@ namespace Thinktecture.IdentityServer.Configuration
 
         #endregion
 
+        #region RoleManagement Property
+
+        /// <summary>
+        /// The XML name of the <see cref="ConfigurationProvider"/> property.
+        /// </summary>
+        internal const global::System.String RoleManagementPropertyName = "roleManagement";
+
+        /// <summary>
+        /// Gets or sets type of the class that provides encryption certificates
+        /// </summary>
+        [global::System.Configuration.ConfigurationProperty(RoleManagementPropertyName, IsRequired = false, IsKey = false, IsDefaultCollection = false, DefaultValue = "Thinktecture.IdentityServer.Repositories.ProviderRoleRepository, Thinktecture.IdentityServer")]
+        public global::System.String RoleManagement
+        {
+            get
+            {
+                return (global::System.String)base[RoleManagementPropertyName];
+            }
+            set
+            {
+                base[RoleManagementPropertyName] = value;
+            }
+        }
+
+        #endregion
+
         #region RelyingParties Property
 
         /// <summary>

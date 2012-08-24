@@ -15,3 +15,5 @@ testimpactdata.sdf
 Packages.dgml
 *.suo
 *.user
+
+_ReSharper*

@@ -10,6 +10,8 @@ using Microsoft.IdentityModel.Web;
 using Thinktecture.IdentityServer.Repositories;
 using Thinktecture.IdentityServer.TokenService;
 using Thinktecture.IdentityServer.Web.GlobalFilter;
+using Thinktecture.IdentityServer.Web.ModelBinding;
+using Thinktecture.IdentityServer.Web.ViewModels.Administration;
 
 namespace Thinktecture.IdentityServer.Web
 {
@@ -35,6 +37,7 @@ namespace Thinktecture.IdentityServer.Web
                 };
 
             AreaRegistration.RegisterAllAreas();
+            RegisterModelBinders();
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
         }
@@ -42,6 +45,11 @@ namespace Thinktecture.IdentityServer.Web
         private void SetupCompositionContainer()
         {
             Container.Current = new CompositionContainer(new RepositoryExportProvider());
+        }
+
+        public static void RegisterModelBinders()
+        {
+            ModelBinders.Binders.Add(typeof(UserModel), new UserModelBinder());
         }
 
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
@@ -66,6 +74,12 @@ namespace Thinktecture.IdentityServer.Web
                 "RelyingPartiesAdmin",
                 "admin/relyingparties/{action}/{id}",
                 new { controller = "RelyingPartiesAdmin", action = "Index", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+                "UserManagement",
+                "admin/users/{action}/{userName}",
+                new { controller = "UserManagement", action = "Index", userName = UrlParameter.Optional }
             );
 
             routes.MapRoute(

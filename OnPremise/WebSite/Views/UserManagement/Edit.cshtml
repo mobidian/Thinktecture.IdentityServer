@@ -1,0 +1,51 @@
+﻿@model Thinktecture.IdentityServer.Web.ViewModels.Administration.UserModel
+
+@{
+    ViewBag.Title = "Edit " + Model.UserName;
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("Edit", "UserManagement", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    
+    <fieldset>
+        <legend>User Details</legend>
+    
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UserName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.UserName)
+            @Html.ValidationMessageFor(model => model.UserName)
+        </div>
+    
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Email)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Email)
+            @Html.ValidationMessageFor(model => model.Email)
+        </div>
+        
+        <div class="editor-label">
+            @Html.Label("Roles")
+        </div>
+        @foreach(string role in ViewBag.Roles)
+        {
+            <div class="editor-field">
+                @Html.CheckBox("roles." + role, Model != null && Model.Roles != null && Model.Roles.Contains(role)) @role
+            </div>
+        }
+        
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back", "Index")
+</div>

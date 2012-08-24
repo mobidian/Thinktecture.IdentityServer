@@ -10,6 +10,7 @@
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.IdentityModel.Claims;
+using Thinktecture.IdentityServer.Models;
 using Thinktecture.IdentityServer.TokenService;
 
 namespace Thinktecture.IdentityServer.Repositories
@@ -21,6 +22,11 @@ namespace Thinktecture.IdentityServer.Repositories
         IEnumerable<string> GetRoles(string userName, RoleTypes roleType);
         IEnumerable<Claim> GetClaims(IClaimsPrincipal principal, RequestDetails requestDetails);
         IEnumerable<string> GetSupportedClaimTypes();
+        void Add(User user);
+        void Edit(User user);
+        void Delete(string userName);
+        User GetUser(string userName);
+        IEnumerable<User> GetUsers();
     }
 
     public enum RoleTypes
